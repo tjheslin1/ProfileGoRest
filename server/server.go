@@ -11,7 +11,7 @@ var Port = 6060
 
 // Start starts up the http rest server.
 func Start() {
-	http.HandleFunc(dogFosterURLPath, DogFosterHandler)
+	http.HandleFunc(dogsQueryURLPath, DogFosterHandler)
 	startServer()
 }
 

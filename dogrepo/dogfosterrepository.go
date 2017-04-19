@@ -13,3 +13,16 @@ func (dfr *DogFosterRepository) ExampleDog() *Dog {
 		Age:  13,
 	}
 }
+
+func (dfr *DogFosterRepository) ExampleDogs() *[]Dog {
+	return &[]Dog{
+		Dog{
+			Name: "Joey",
+			Age:  13,
+		},
+		Dog{
+			Name: "Woody",
+			Age:  1,
+		},
+	}
+}

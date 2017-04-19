@@ -36,8 +36,8 @@ func TestDogFosterHandler(t *testing.T) {
 
 	w.Body.Read(data)
 
-	var dog dogrepo.Dog
-	err = json.Unmarshal(data, &dog)
+	var dogs []dogrepo.Dog
+	err = json.Unmarshal(data, &dogs)
 	if err != nil {
 		t.Fatal(err)
 	}

@@ -7,13 +7,13 @@ import (
 	"github.com/tjheslin1/ProfileGoRest/dogrepo"
 )
 
-var dogFosterURLPath = "/foster"
+var dogsQueryURLPath = "/foster"
 
 // DogFosterHandler handles requests to query the dog repository
 func DogFosterHandler(w http.ResponseWriter, req *http.Request) {
 	repository := dogrepo.DogFosterRepository{}
 
-	dog := repository.ExampleDog()
+	dog := repository.ExampleDogs()
 
 	data, _ := json.Marshal(&dog)
 
