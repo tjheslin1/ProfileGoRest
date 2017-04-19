@@ -1,1 +1,4 @@
 out/
+
+# used to ignore Go code coverage files
+*.out

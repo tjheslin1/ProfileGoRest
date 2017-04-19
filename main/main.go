@@ -2,29 +2,13 @@ package main
 
 import (
 	"fmt"
-	"io"
-	"log"
-	"net/http"
+
+	"github.com/tjheslin1/ProfileGoRest/server"
 )
 
 func main() {
-	http.HandleFunc("/hello", helloHandler)
-
-	go startServer()
+	go server.Start()
 
 	var input string
 	fmt.Scanln(&input)
-}
-
-func helloHandler(w http.ResponseWriter, req *http.Request) {
-	log.Println(req)
-	io.WriteString(w, "hello, world!\n")
-}
-
-func startServer() {
-	err := http.ListenAndServe(":6060", nil)
-	if err != nil {
-		fmt.Println(err)
-		panic(err)
-	}
 }
