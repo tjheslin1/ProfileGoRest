@@ -3,6 +3,7 @@ package server
 import (
 	"encoding/json"
 	"io/ioutil"
+	"log"
 	"net/http"
 	"net/http/httptest"
 	"os"
@@ -23,7 +24,8 @@ func TestDogFosterHandler(t *testing.T) {
 	req, err := http.NewRequest("GET", "http://localhost:6060/foster", nil)
 	w := httptest.NewRecorder()
 
-	DogFosterHandler(w, req)
+	dfh := DogFosterHandler{"/foster", log.New(os.Stdout, "", 0)}
+	dfh.DogFosterHandler(w, req)
 
 	if err != nil {
 		t.Error(err)

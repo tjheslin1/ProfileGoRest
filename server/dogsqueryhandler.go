@@ -2,15 +2,22 @@ package server
 
 import (
 	"encoding/json"
+	"log"
 	"net/http"
 
 	"github.com/tjheslin1/ProfileGoRest/dogrepo"
 )
 
-var dogsQueryURLPath = "/foster"
+// DogFosterHandler provides a function for http.HandlerFunc
+type DogFosterHandler struct {
+	URLPath string
+	logger  *log.Logger
+}
 
 // DogFosterHandler handles requests to query the dog repository
-func DogFosterHandler(w http.ResponseWriter, req *http.Request) {
+func (dfh *DogFosterHandler) DogFosterHandler(w http.ResponseWriter, req *http.Request) {
+	dfh.logger.Printf("%v\n::::::\n", req)
+
 	repository := dogrepo.DogFosterRepository{}
 
 	dog := repository.ExampleDogs()
