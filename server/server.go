@@ -17,11 +17,13 @@ func Start(logger *log.Logger) {
 }
 
 func startServer(logger *log.Logger) {
-	err := http.ListenAndServe(":"+strconv.Itoa(Port), nil)
-	if err != nil {
-		logger.Println(err)
-		panic(err)
-	}
+	go func() {
+		err := http.ListenAndServe(":"+strconv.Itoa(Port), nil)
+		if err != nil {
+			logger.Println(err)
+			panic(err)
+		}
+	}()
 
 	logger.Printf("Server started on port: %v\n", strconv.Itoa(Port))
 }
