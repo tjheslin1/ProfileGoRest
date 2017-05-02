@@ -1,8 +1,10 @@
+// Package server defins a REST server, exposed on the provided `Port`.
 package server
 
 import (
 	"log"
 	"net/http"
+	_ "net/http/pprof"
 	"strconv"
 )
 
@@ -13,6 +15,9 @@ var Port = 6060
 func Start(logger *log.Logger) {
 	dfh := DogFosterHandler{"/foster", logger}
 	http.HandleFunc(dfh.URLPath, dfh.DogFosterHandler)
+	http.HandleFunc("/ready", func(w http.ResponseWriter, req *http.Request) {
+		w.WriteHeader(204)
+	})
 	startServer(logger)
 }
 
