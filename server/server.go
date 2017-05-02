@@ -4,7 +4,6 @@ package server
 import (
 	"log"
 	"net/http"
-	_ "net/http/pprof"
 	"strconv"
 )
 

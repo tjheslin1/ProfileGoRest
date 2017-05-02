@@ -5,6 +5,8 @@ import (
 	"log"
 	"os"
 
+	_ "net/http/pprof"
+
 	"github.com/tjheslin1/ProfileGoRest/server"
 )
 
